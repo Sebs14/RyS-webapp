@@ -12,7 +12,7 @@ import Image from 'next/image';
 
 const Page = () => {
 
-    let [isOpen, setIsOpen] = useState(false)
+  let [isOpen, setIsOpen] = useState(false)
 
   function closeModal() {
     setIsOpen(false)

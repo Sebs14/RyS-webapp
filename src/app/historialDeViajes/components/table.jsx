@@ -74,11 +74,11 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex justify-center py-1 bg-green-200 rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<p class="text-gray-900 whitespace-no-wrap">
@@ -113,11 +113,11 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex justify-center py-1 bg-green-200 rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<p class="text-gray-900 whitespace-no-wrap">
@@ -152,11 +152,11 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex justify-center py-1 bg-green-200 rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<p class="text-gray-900 whitespace-no-wrap">
@@ -191,11 +191,11 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex justify-center py-1 bg-green-200 rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<p class="text-gray-900 whitespace-no-wrap">
@@ -220,15 +220,14 @@ const table = () => {
 					</table>
 					<div
 						class="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
-						<span class="text-xs xs:text-sm text-gray-900">
-                            Showing 1 to 4 of 50 Entries
-                        </span>
-						<div class="inline-flex mt-2 xs:mt-0">
+						<div class="inline-flex w-full justify-between items-center mt-2 xs:mt-0">
 							<button
                                 class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l">
                                 Prev
                             </button>
-							&nbsp; &nbsp;
+							<span class="text-xs xs:text-sm text-gray-900">
+                            Pagina 1
+                        	</span> 
 							<button
                                 class="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r">
                                 Next

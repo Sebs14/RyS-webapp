@@ -6,7 +6,7 @@ const Log = () => {
   return (
     <article className="flex min-h-screen items-center justify-between">
       <div className="flex flex-col items-center justify-center w-[50%]">
-        <Image width={512} height={512} src={"/logIn.jpg"} alt="logIn" />
+        <Image width={512} height={512} src={"/logIn.jpg"} alt="logIn"/>
         <h1 className=" text-4xl font-rubik font-bold">R y S Transportes</h1>
       </div>
       <div className="flex flex-col items-start pl-40 justify-center w-[50%] bg-[#9DD9D2] min-h-screen">
@@ -30,7 +30,7 @@ const Log = () => {
             Inicia sesión
           </button>
           <Link
-            href="/logIn"
+            href="/newRoute"
             className="mt-4 w-full text-center font-medium font-rubik"
           >
             olvide mi contraseña

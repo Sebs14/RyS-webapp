@@ -1,18 +1,19 @@
-import Image from 'next/image'
+
 import React from 'react'
+import Link from 'next/link';
 
 const table = () => {
   return (
     <div class="bg-white px-4 rounded-md w-full ">
 	    <div class=" flex items-center justify-between pb-6">
             <div className='relative ' >
-                <h2 class="text-gray-600 font-semibold font-rubik">Conductores</h2>
+                <h2 class="text-gray-600 font-semibold font-rubik">Historial de viajes</h2>
                 <div className='bg-[#4C3175] mt-2 flex w-[41px] h-[1px] absolute -left-8'/>
             </div>
             <div class="flex items-center justify-between">
-                <a className=' rounded-lg px-4 py-2 text-white text-center font-rubik bg-orange-600' href="/conductores/newConductor">
-                    Agregar conductor
-                </a>
+			<Link href="/historialConductor/newRoute" className="w-[188px] h-[39px] px-[38.10px] py-[13.10px] bg-orange-500 rounded-lg justify-center items-center gap-[11.91px] inline-flex hover:bg-orange-600">
+				<span className="font-rubik font-semibold text-white text-md ">Agregar Ruta</span>
+			</Link>
             </div>
 		</div>
 		<div className=''>
@@ -23,20 +24,24 @@ const table = () => {
 							<tr>
 								<th
 									class="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-									ID conductor
+									ID Unidad
 								</th>
 								<th
 									class="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-									Nombre
+									ID Ruta
 								</th>
 								<th
 									class="flex px-5 py-4  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
 									<div className='flex flex-col justify-center items-center mt-2'>
                                         <span>
-                                            Viajes
+                                            Distancia/
                                         </span>
-                                        <span>completados</span>
+                                        <span>KM</span>
                                     </div>
+								</th>
+								<th
+									class="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+									Fecha
 								</th>
 								<th
 									class="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
@@ -64,11 +69,16 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex py-1  rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p class="text-gray-900 whitespace-no-wrap">
+										Jan 21, 2020
+									</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<span
@@ -77,11 +87,11 @@ const table = () => {
 									</span>
 								</td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="px-3 py-3">
-                                        <p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
-                                            Activo
-                                        </p>
-                                    </div>	
+								<div class="px-3 py-3">
+								<p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
+									Activo
+								</p>
+								</div>	
 								</td>
 							</tr>
                             <tr>
@@ -98,11 +108,16 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex py-1  rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p class="text-gray-900 whitespace-no-wrap">
+										Jan 21, 2020
+									</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<span
@@ -111,14 +126,14 @@ const table = () => {
 									</span>
 								</td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="px-3 py-3">
-                                        <p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
-                                            Activo
-                                        </p>
-                                    </div>	
+								<div class="px-3 py-3">
+								<p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
+									Activo
+								</p>
+								</div>	
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<div class="flex items-center">
 											<div class="ml-3">
@@ -132,11 +147,16 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex py-1  rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p class="text-gray-900 whitespace-no-wrap">
+										Jan 21, 2020
+									</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<span
@@ -145,14 +165,14 @@ const table = () => {
 									</span>
 								</td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="px-3 py-3">
-                                        <p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
-                                            Activo
-                                        </p>
-                                    </div>	
+								<div class="px-3 py-3">
+								<p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
+									Activo
+								</p>
+								</div>	
 								</td>
 							</tr>
-                            <tr>
+							<tr>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<div class="flex items-center">
 											<div class="ml-3">
@@ -166,11 +186,16 @@ const table = () => {
 									<p class="text-gray-900 whitespace-no-wrap">Juan Hernandez</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-								<div class="px-5 py-5">
-								<p class="text-green-950 flex py-1  rounded-sm font-semibold">
-									43
-								</p>
-								</div>	
+									<div class="px-5 py-5">
+										<p class="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+											43
+										</p>
+									</div>	
+								</td>
+								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+									<p class="text-gray-900 whitespace-no-wrap">
+										Jan 21, 2020
+									</p>
 								</td>
 								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
 									<span
@@ -179,11 +204,11 @@ const table = () => {
 									</span>
 								</td>
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    <div class="px-3 py-3">
-                                        <p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
-                                            Activo
-                                        </p>
-                                    </div>	
+								<div class="px-3 py-3">
+								<p class="text-green-500 rounded-md border-gray-400 border-2 flex justify-center py-1-sm">
+									Activo
+								</p>
+								</div>	
 								</td>
 							</tr>
 						</tbody>
