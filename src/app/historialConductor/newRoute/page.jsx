@@ -8,9 +8,10 @@ const NewRoute = () => {
   let [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
 
-  // function redirectUser() {
-  //   router.push();
-  // }
+   function redirectUser() {
+     router.push("http://localhost:3000/historialConductor/");
+     closeModal();
+   }
 
   function closeModal() {
     setIsOpen(false);
@@ -18,7 +19,7 @@ const NewRoute = () => {
 
   function openModal() {
     setIsOpen(true);
-    setTimeout(closeModal, 5000)
+    setTimeout(redirectUser, 5000)
   }
 
   return (
