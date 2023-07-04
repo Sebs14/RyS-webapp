@@ -40,12 +40,12 @@ const Sidebar = ({historialPage, unidadesPage, conductoresPage }) => {
                     }
 
                     { conductoresPage === false ? (
-                        <a className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg  hover:bg-gray-100 hover:text-gray-700" href="#">
+                        <a className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg  hover:bg-gray-100 hover:text-gray-700" href="/conductores">
                             <span className="inline-flex items-center justify-center h-12 w-12 text-lg"><FontAwesomeIcon className="text-indigo-950" icon={faPersonRunning}/></span>     
                             <span className="mx-2 text-sm font-medium">Conductores</span>
                         </a>
                     ) : (
-                        <a className="flex items-center px-3 py-2  transition-colors duration-300 transform rounded-lg  bg-gray-100 text-gray-700" href="#">
+                        <a className="flex items-center px-3 py-2  transition-colors duration-300 transform rounded-lg  bg-gray-100 text-gray-700" href="/conductores">
                             <span className="inline-flex items-center justify-center h-12 w-12 text-lg"><FontAwesomeIcon className="text-indigo-950" icon={faPersonRunning}/></span>     
                             <span className="mx-2 text-sm font-medium">Conductores</span>
                         </a>
