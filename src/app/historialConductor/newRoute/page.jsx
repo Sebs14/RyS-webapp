@@ -19,7 +19,7 @@ const NewRoute = () => {
 
   function openModal() {
     setIsOpen(true);
-    setTimeout(redirectUser, 5000)
+    setTimeout(redirectUser, 3000)
   }
 
   return (
