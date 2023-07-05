@@ -1,13 +1,13 @@
 import React from 'react'
-import Navbar from '@/components/Navbar'
+// import Navbar from '../../components/Navbar'
 import Sidebar from '@/components/Sidebar'
 import Table from './components/table'
 
+// <Navbar/>
 
 const page = () => {
   return (
     <div className='max-h-screen overflow-hidden'>
-        <Navbar/>
         <div className='flex'>
             <Sidebar historialPage={false} unidadesPage={false} conductoresPage={false} user="conductor"/>
             <div className=' w-full justify-center items-center  bg-[#FFF8F0]'>

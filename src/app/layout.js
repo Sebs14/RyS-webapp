@@ -1,8 +1,5 @@
 import "./globals.css";
-import { Inter, Rubik } from "next/font/google";
-
-
-const inter = Inter({ subsets: ["latin"] });
+import { Rubik } from "next/font/google";
 
 const rubik = Rubik({ subsets: ["latin"], variable: "--font-rubik" });
 
