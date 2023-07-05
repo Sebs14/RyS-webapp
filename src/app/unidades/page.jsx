@@ -5,13 +5,14 @@ import { Dialog, Transition } from "@headlessui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import Navbar from '../../components/Navbar'
 import Sidebar from "@/components/Sidebar";
-import { faFileLines } from "@fortawesome/free-regular-svg-icons";
+import { faFileLines, faMap } from "@fortawesome/free-regular-svg-icons";
 import { Progress, Typography } from "@/components/ExportFile";
 import {
   faArrowsRotate,
   faArrowTrendUp,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
+import Link from 'next/link';
 
 const Page = () => {
   let [isOpen, setIsOpen] = useState(false);
@@ -81,9 +82,13 @@ const Page = () => {
             <label className="font-rubik text-2xl font-semibold">
               Ubicación
             </label>
-            <div className="w-[830px] h-[386px] p-4 flex justify-center items-center bg-white rounded-2xl shadow">
-              <h1 className="text-4xl font-rubik font-bold"> MAPA </h1>
-            </div>
+            <Link
+              href={"/unidades/Mapa"}
+              className="w-[255px] h-[178px] p-4 flex font-bold font-rubik flex-col items-center justify-center gap-3 bg-white rounded-2xl shadow hover:transform hover:scale-105 hover:duration-200"
+            >
+              <FontAwesomeIcon icon={faMap} size="2x" />
+                Ver mapa de la ruta
+            </Link>
           </div>
           <div className="flex gap-9">
             <div className="w-[402px] h-[190px] p-6 flex flex-col gap-1 bg-white rounded-2xl shadow">
