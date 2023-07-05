@@ -5,15 +5,10 @@ import Link from 'next/link';
 const table = () => {
   return (
     <div class="bg-white px-4 rounded-md w-full ">
-	    <div class=" flex items-center justify-between pb-6">
+	    <div class=" flex items-center justify-start pb-6">
             <div className='relative ' >
                 <h2 class="text-gray-600 font-semibold font-rubik">Historial de viajes</h2>
                 <div className='bg-[#4C3175] mt-2 flex w-[41px] h-[1px] absolute -left-8'/>
-            </div>
-            <div class="flex items-center justify-between">
-			<Link href="/historialConductor/newRoute" className="w-[188px] h-[39px] px-[38.10px] py-[13.10px] bg-orange-500 rounded-lg justify-center items-center gap-[11.91px] inline-flex hover:bg-orange-600">
-				<span className="font-rubik font-semibold text-white text-md ">Agregar Ruta</span>
-			</Link>
             </div>
 		</div>
 		<div className=''>
