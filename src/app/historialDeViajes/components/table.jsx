@@ -4,8 +4,8 @@ import React from "react";
 import Link from "next/link";
 //import getFreights from "../../../services/fetchFreights";
 import moment from "moment";
-import Lottie from 'lottie-react';
-import Squirtle from '../../../../public/squirtle.json'
+import Lottie from "lottie-react";
+import Squirtle from "../../../../public/squirtle.json";
 import axios from "axios";
 
 const table = () => {
@@ -26,14 +26,14 @@ const table = () => {
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
-  
+
   const getFreights = async () => {
     try {
       const responses = await axios.get(
         `https://rys.up.railway.app/` + `freights`,
         config
       );
-      console.log(responses)
+      console.log(responses);
       return responses;
     } catch (error) {
       console.log(error);
@@ -43,44 +43,40 @@ const table = () => {
   const fetchFreights = async () => {
     const response = await getFreights();
     setFreights(response);
-    setLength(response.data.length)
+    setLength(response.data.length);
   };
 
   const prevButton = () => {
-    setNumPage(numPage - 1)
-    setA(a-4)
-    setB(b-4)
-    setC(c-4)
-    setD(d-4)
-  }
+    setNumPage(numPage - 1);
+    setA(a - 4);
+    setB(b - 4);
+    setC(c - 4);
+    setD(d - 4);
+  };
   const nextButton = () => {
-    setA(a+4)
-    setB(b+4)
-    setC(c+4)
-    setD(d+4)
-    setNumPage(numPage + 1)
-  }
+    setA(a + 4);
+    setB(b + 4);
+    setC(c + 4);
+    setD(d + 4);
+    setNumPage(numPage + 1);
+  };
 
   const cambioATrue = () => {
-    setIsLoaded(true)
-   
-  }
+    setIsLoaded(true);
+  };
 
   useEffect(() => {
-    if(typeof window !== 'undefined' && window.localStorage){
-      const tokens = localStorage.getItem("token")
+    if (typeof window !== "undefined" && window.localStorage) {
+      const tokens = localStorage.getItem("token");
 
-      setToken(tokens)
+      setToken(tokens);
     }
-    
-    
   }, []);
 
   useEffect(() => {
     fetchFreights();
-    setTimeout(cambioATrue, 4000)
-  }, [token])
-
+    setTimeout(cambioATrue, 20000);
+  }, [token]);
 
   // freights.data.map((f) => {
   //   return (
@@ -108,7 +104,7 @@ const table = () => {
   //   </tr>
   //   )
   // })
-  
+
   return (
     <div className="bg-white px-4 rounded-md w-full ">
       <div className=" flex items-center justify-between pb-6">
@@ -141,138 +137,154 @@ const table = () => {
                   </th>
                 </tr>
               </thead>
-              
-              {isLoaded === true ? 
-              (
+
+              {isLoaded === true ? (
                 <tbody>
-                  {length > 0 ? 
-                    (
-                      <>
-                        <tr>
+                  {length > 0 ? (
+                    <>
+                      <tr>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[a].idFreight}
+                            {freights.data[a].idFreight}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[a].destination}
+                            {freights.data[a].destination}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                              {freights.data[a].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                                {moment(freights.data[a].date).utc().format('YYYY-MM-DD')}
-                            </p>
-                        </td>
-                        </tr>
-                        <tr >
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[b].idFreight}
+                            {freights.data[a].tonage}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[b].destination}
+                            {moment(freights.data[a].date)
+                              .utc()
+                              .format("YYYY-MM-DD")}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[b].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[b].destination}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%]  max-w-[25%]">
                           <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                              {freights.data[b].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                                {moment(freights.data[b].date).utc().format('YYYY-MM-DD')}
-                            </p>
-                        </td>
-                        </tr>
-                        <tr >
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[c].idFreight}
+                            {freights.data[b].tonage}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[c].destination}
+                            {moment(freights.data[b].date)
+                              .utc()
+                              .format("YYYY-MM-DD")}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[c].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[c].destination}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                              {freights.data[c].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                                {moment(freights.data[c].date).utc().format('YYYY-MM-DD')}
-                            </p>
-                        </td>
-                        </tr>
-                        <tr >
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[d].idFreight}
+                            {freights.data[c].tonage}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
-                          {freights.data[d].destination}
+                            {moment(freights.data[c].date)
+                              .utc()
+                              .format("YYYY-MM-DD")}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[d].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[d].destination}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                              {freights.data[d].tonage}
+                            {freights.data[d].tonage}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                            <p className="text-gray-900 whitespace-no-wrap">
-                                {moment(freights.data[d].date).utc().format('YYYY-MM-DD')}
-                            </p>
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {moment(freights.data[d].date)
+                              .utc()
+                              .format("YYYY-MM-DD")}
+                          </p>
                         </td>
-                        </tr>
-                      </>
-                    ) 
-                    :
-                    ( 
-                      <tbody>
-                        <tr>
-                          <td>NO HAY DATOS QUE MOSTRAR</td>
-                        </tr>
-                      </tbody>
-                      )
-                  }
+                      </tr>
+                    </>
+                  ) : (
+                    <tbody>
+                      <tr>
+                        <td>NO HAY DATOS QUE MOSTRAR</td>
+                      </tr>
+                    </tbody>
+                  )}
                 </tbody>
-              ) :
-              (
-                  <div className="flex absolute left-0 w-full items-center justify-center font-bold font-rubik">
-                    <h1>SE ESTAN CARGANDO LOS DATOS</h1>
-                    <div className="flex flex-col h-screen justify-center items-center">
-                      <Lottie animationData={Squirtle} />
-                    </div>
+              ) : (
+                <div className="flex flex-col absolute left-0 w-full items-center justify-center font-bold font-rubik">
+                  <h1 className="text-xl font-bold font-rubik">
+                    SE ESTAN CARGANDO LOS DATOS
+                  </h1>
+                  <h2 className="text-md font-rubik">Sentimos la demora</h2>
+                  <div className="flex flex-col h-screen justify-center items-center">
+                    <Lottie animationData={Squirtle} />
                   </div>
-              )
-              }
+                </div>
+              )}
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
               <div className="inline-flex w-full justify-between items-center mt-2 xs:mt-0">
-                { a === 0 ? (
-                    <button disabled className=" disabled:opacity-25 text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l" onClick={prevButton}>
-                      Prev
-                    </button>
-                ) : (<button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l" onClick={prevButton}>
-                      Prev
-                    </button>)
+                {a === 0 ? (
+                  <button
+                    disabled
+                    className=" disabled:opacity-25 text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l"
+                    onClick={prevButton}
+                  >
+                    Prev
+                  </button>
+                ) : (
+                  <button
+                    className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-l"
+                    onClick={prevButton}
+                  >
+                    Prev
+                  </button>
+                )}
 
-                }
-                
-                <span className="text-xs xs:text-sm text-gray-900">Pagina {numPage}</span>
-                <button className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r" onClick={nextButton}>
+                <span className="text-xs xs:text-sm text-gray-900">
+                  Pagina {numPage}
+                </span>
+                <button
+                  className="text-sm text-indigo-50 transition duration-150 hover:bg-indigo-500 bg-indigo-600 font-semibold py-2 px-4 rounded-r"
+                  onClick={nextButton}
+                >
                   Next
                 </button>
               </div>
