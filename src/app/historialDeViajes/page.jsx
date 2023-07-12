@@ -1,7 +1,10 @@
+'use client'
 import React from 'react'
 // import Navbar from '../../components/Navbar'
 import Sidebar from '@/components/Sidebar'
 import Table from './components/table'
+
+
 
 // <Navbar/>
 const page = () => {

@@ -1,10 +1,11 @@
 "use client"
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AuthService from "../../../services/auth.service"
+import axios from "axios";
 
 const Log = () => {
   const router = useRouter();

@@ -87,11 +87,6 @@ const table = () => {
   //   </tr>
   //   )
   // })
-
-
-  console.log(freights)
-  console.log(length)
-  console.log(isLoaded)
   
   return (
     <div className="bg-white px-4 rounded-md w-full ">
