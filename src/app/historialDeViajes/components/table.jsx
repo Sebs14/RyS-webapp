@@ -30,7 +30,7 @@ const table = () => {
   const getFreights = async () => {
     try {
       const responses = await axios.get(
-        `http://localhost:8080/` + `freights`,
+        `https://rys.up.railway.app/` + `freights`,
         config
       );
       console.log(responses)
