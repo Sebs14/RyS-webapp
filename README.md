@@ -93,9 +93,10 @@ Luego, para correr el programa en localhost corremos el comando
 ## Authors
 
 - Sebastián Flores Iraheta (FrontEnd) 00196919@uca.edu.sv
-- Ricardo Adrián Aparicio Lemus (Backend) 00032219
-- Diego Esuardo Abrego Cornejo (Backend) 00044919
-- Diego Alessandro Rodríguez Villalta (Backend) 00101519
+- Manuel de Jesus Hernandez Benitez 00094119@uca.edu.sv
+- Ricardo Adrián Aparicio Lemus (Backend) 00032219@uca.edu.sv
+- Diego Esuardo Abrego Cornejo (Backend) 00044919@uca.edu.sv
+- Diego Alessandro Rodríguez Villalta (Backend) 00101519@uca.edu.sv
 - Andres Enrique Lopez Rodriguez (Backend) 00196919@uca.edu.sv
 - Andrea Alejandra Ayala Deras (FrontEnd) 00109319@uca.edu.sv
 
