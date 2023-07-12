@@ -2,10 +2,11 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
-import getFreights from "../../../services/fetchFreights";
+//import getFreights from "../../../services/fetchFreights";
 import moment from "moment";
 import Lottie from 'lottie-react';
 import Squirtle from '../../../../public/squirtle.json'
+import axios from "axios";
 
 const table = () => {
   const [freights, setFreights] = useState();
@@ -16,11 +17,28 @@ const table = () => {
   const [b, setB] = useState(1);
   const [c, setC] = useState(2);
   const [d, setD] = useState(3);
-  
+  const [token, setToken] = useState("");
   // const a = 0;
   // const b = 1;
   // const c = 2;
   // const d = 3;
+
+  const config = {
+    headers: { Authorization: `Bearer ${token}` },
+  };
+  
+  const getFreights = async () => {
+    try {
+      const responses = await axios.get(
+        `http://localhost:8080/` + `freights`,
+        config
+      );
+      console.log(responses)
+      return responses;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const fetchFreights = async () => {
     const response = await getFreights();
@@ -49,16 +67,19 @@ const table = () => {
   }
 
   useEffect(() => {
-    fetchFreights();
-    setTimeout(cambioATrue, 4000)
+    if(typeof window !== 'undefined' && window.localStorage){
+      const tokens = localStorage.getItem("token")
+
+      setToken(tokens)
+    }
+    
     
   }, []);
 
   useEffect(() => {
-    
-  }, [numPage]);
-
-  
+    fetchFreights();
+    setTimeout(cambioATrue, 4000)
+  }, [token])
 
 
   // freights.data.map((f) => {

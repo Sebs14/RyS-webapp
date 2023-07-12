@@ -7,7 +7,6 @@ axios.defaults.baseURL = "http://localhost:8080/";
 const params = new URLSearchParams();
 
 const login = (email, password) => {
-  
 
   params.append("identifier", email);
   params.append("password", password);
