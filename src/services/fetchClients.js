@@ -7,12 +7,13 @@ const config = {
 
 const url = process.env.BASE_URL;
 
-const getFreights = async () => {
+const fetchClients = async () => {
   try {
-    const response = await axios.get(url + `freights`, config);
-    return response;
+    const response = await axios.get(url + `clients`, config);
+    return response.data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
-export default getFreights;
+
+export default fetchClients;

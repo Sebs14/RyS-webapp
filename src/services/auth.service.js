@@ -2,19 +2,19 @@
 
 import axios from "axios";
 
-axios.defaults.baseURL = "https://rys.up.railway.app/";
+// axios.defaults.baseURL = "https://rys.up.railway.app/";
+axios.defaults.baseURL = process.env.BASE_URL;
 
 const params = new URLSearchParams();
 
 const login = (email, password) => {
-
   params.append("identifier", email);
   params.append("password", password);
 
   return axios.post("auth/signin", params).then((response) => {
     var cadena = JSON.stringify(response.data.token).replace(/['"]+/g, "");
-      localStorage.setItem("Correo", email);
-      localStorage.setItem("token", cadena);
+    localStorage.setItem("Correo", email);
+    localStorage.setItem("token", cadena);
     return response.data;
   });
 };
@@ -32,6 +32,5 @@ const authService = {
   logout,
   getCurrentUser,
 };
-
 
 export default authService;

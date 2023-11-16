@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
-//import getFreights from "../../../services/fetchFreights";
+import getFreights from "../../../services/fetchFreights";
 import moment from "moment";
 import Lottie from "lottie-react";
 import Squirtle from "../../../../public/squirtle.json";
@@ -10,6 +10,7 @@ import axios from "axios";
 
 const table = () => {
   const [freights, setFreights] = useState();
+  const [status, setStatus] = useState(null);
   const [length, setLength] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [numPage, setNumPage] = useState(1);
@@ -17,33 +18,40 @@ const table = () => {
   const [b, setB] = useState(1);
   const [c, setC] = useState(2);
   const [d, setD] = useState(3);
+  const [e, setE] = useState(4);
+  const [f, setF] = useState(5);
   const [token, setToken] = useState("");
   // const a = 0;
   // const b = 1;
   // const c = 2;
   // const d = 3;
 
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
+  // const config = {
+  //   headers: { Authorization: `Bearer ${token}` },
+  // };
+  //https://rys.up.railway.app/
+  // const getFreights = async () => {
+  //   try {
+  //     const responses = await axios.get(
+  //       `  http://localhost:8080/` + `freights`,
+  //       config
+  //     );
+  //     console.log(responses);
+  //     return responses;
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const getFreights = async () => {
-    try {
-      const responses = await axios.get(
-        `https://rys.up.railway.app/` + `freights`,
-        config
-      );
-      console.log(responses);
-      return responses;
-    } catch (error) {
-      console.log(error);
-    }
+  const cambioATrue = () => {
+    setIsLoaded(true);
   };
 
   const fetchFreights = async () => {
     const response = await getFreights();
     setFreights(response);
     setLength(response.data.length);
+    setStatus(response.status);
   };
 
   const prevButton = () => {
@@ -52,17 +60,17 @@ const table = () => {
     setB(b - 4);
     setC(c - 4);
     setD(d - 4);
+    setE(e - 4);
+    setF(f - 4);
   };
   const nextButton = () => {
     setA(a + 4);
     setB(b + 4);
     setC(c + 4);
     setD(d + 4);
+    setE(e + 4);
+    setF(f + 4);
     setNumPage(numPage + 1);
-  };
-
-  const cambioATrue = () => {
-    setIsLoaded(true);
   };
 
   useEffect(() => {
@@ -75,8 +83,13 @@ const table = () => {
 
   useEffect(() => {
     fetchFreights();
-    setTimeout(cambioATrue, 20000);
   }, [token]);
+
+  useEffect(() => {
+    if (status === 200) {
+      cambioATrue();
+    }
+  }, [status]);
 
   // freights.data.map((f) => {
   //   return (
@@ -238,6 +251,54 @@ const table = () => {
                           </p>
                         </td>
                       </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[e].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[e].destination}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+                            {freights.data[e].tonage}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {moment(freights.data[e].date)
+                              .utc()
+                              .format("YYYY-MM-DD")}
+                          </p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[f].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[f].destination}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
+                            {freights.data[f].tonage}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {moment(freights.data[f].date)
+                              .utc()
+                              .format("YYYY-MM-DD")}
+                          </p>
+                        </td>
+                      </tr>
                     </>
                   ) : (
                     <tbody>
@@ -249,10 +310,6 @@ const table = () => {
                 </tbody>
               ) : (
                 <div className="flex flex-col absolute left-0 w-full items-center justify-center font-bold font-rubik">
-                  <h1 className="text-xl font-bold font-rubik">
-                    SE ESTAN CARGANDO LOS DATOS
-                  </h1>
-                  <h2 className="text-md font-rubik">Sentimos la demora</h2>
                   <div className="flex flex-col h-screen justify-center items-center">
                     <Lottie animationData={Squirtle} />
                   </div>
