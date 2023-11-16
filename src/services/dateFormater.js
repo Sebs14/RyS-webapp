@@ -1,3 +1,4 @@
+"use client";
 //a simple date formatting function
 export function dateFormat(inputDate, format) {
   //parse the input date
