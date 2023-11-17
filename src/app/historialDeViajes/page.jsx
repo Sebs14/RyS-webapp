@@ -20,8 +20,7 @@ const page = () => {
             <Table />
           </div>
         </div>
-        <div className="relative">
-        </div>
+        <div className="relative"></div>
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import moment from "moment";
 import Lottie from "lottie-react";
 import Squirtle from "../../../../public/squirtle.json";
 import axios from "axios";
+import Row from "./row";
 
 const table = () => {
   const [freights, setFreights] = useState();
@@ -151,8 +152,8 @@ const table = () => {
                     Destino
                   </th>
                   <th className="flex px-5 py-4  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    <div className="flex flex-col justify-center items-center mt-2">
-                      <span>Toneladas</span>
+                    <div className="flex flex-col justify-center items-center">
+                      <span>Placa</span>
                     </div>
                   </th>
                   <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
@@ -165,180 +166,60 @@ const table = () => {
                 <tbody>
                   {length > 0 ? (
                     <>
-                      <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[10%] max-w-[10%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[a].idFreight}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[30%] max-w-[30%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[a].clients.name}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[a].destination}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[10%] max-w-[10%]">
-                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                            {freights.data[a].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {moment(freights.data[a].date)
-                              .utc()
-                              .format("YYYY-MM-DD")}
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[b].idFreight}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[b].clients.name}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[b].destination}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%]  max-w-[25%]">
-                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                            {freights.data[b].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {moment(freights.data[b].date)
-                              .utc()
-                              .format("YYYY-MM-DD")}
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[c].idFreight}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[c].clients.name}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[c].destination}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                            {freights.data[c].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {moment(freights.data[c].date)
-                              .utc()
-                              .format("YYYY-MM-DD")}
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[d].idFreight}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[d].clients.name}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[d].destination}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                            {freights.data[d].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {moment(freights.data[d].date)
-                              .utc()
-                              .format("YYYY-MM-DD")}
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[e].idFreight}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[e].clients.name}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[e].destination}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                            {freights.data[e].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {moment(freights.data[e].date)
-                              .utc()
-                              .format("YYYY-MM-DD")}
-                          </p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[f].idFreight}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[f].clients.name}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {freights.data[f].destination}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-                            {freights.data[f].tonage}
-                          </p>
-                        </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-                          <p className="text-gray-900 whitespace-no-wrap">
-                            {moment(freights.data[f].date)
-                              .utc()
-                              .format("YYYY-MM-DD")}
-                          </p>
-                        </td>
-                      </tr>
+                      <Row
+                        idFreight={freights.data[a].idFreight}
+                        client={freights.data[a].clients.name}
+                        destination={freights.data[a].destination}
+                        plate={freights.data[a].units.plate}
+                        date={moment(freights.data[a].date)
+                          .utc()
+                          .format("YYYY-MM-DD")}
+                      />
+                      <Row
+                        idFreight={freights.data[b].idFreight}
+                        client={freights.data[b].clients.name}
+                        destination={freights.data[b].destination}
+                        plate={freights.data[b].units.plate}
+                        date={moment(freights.data[b].date)
+                          .utc()
+                          .format("YYYY-MM-DD")}
+                      />
+                      <Row
+                        idFreight={freights.data[c].idFreight}
+                        client={freights.data[c].clients.name}
+                        destination={freights.data[c].destination}
+                        plate={freights.data[c].units.plate}
+                        date={moment(freights.data[c].date)
+                          .utc()
+                          .format("YYYY-MM-DD")}
+                      />
+                      <Row
+                        idFreight={freights.data[d].idFreight}
+                        client={freights.data[d].clients.name}
+                        destination={freights.data[d].destination}
+                        plate={freights.data[d].units.plate}
+                        date={moment(freights.data[d].date)
+                          .utc()
+                          .format("YYYY-MM-DD")}
+                      />
+                      <Row
+                        idFreight={freights.data[e].idFreight}
+                        client={freights.data[e].clients.name}
+                        destination={freights.data[e].destination}
+                        plate={freights.data[e].units.plate}
+                        date={moment(freights.data[e].date)
+                          .utc()
+                          .format("YYYY-MM-DD")}
+                      />
+                      <Row
+                        idFreight={freights.data[f].idFreight}
+                        client={freights.data[f].clients.name}
+                        destination={freights.data[f].destination}
+                        plate={freights.data[f].units.plate}
+                        date={moment(freights.data[f].date)
+                          .utc()
+                          .format("YYYY-MM-DD")}
+                      />
                     </>
                   ) : (
                     <tbody>
@@ -349,11 +230,11 @@ const table = () => {
                   )}
                 </tbody>
               ) : (
-                <div className="flex flex-col absolute left-0 w-full items-center justify-center font-bold font-rubik">
-                  <div className="flex flex-col h-screen justify-center items-center">
+                <tr className="flex flex-col absolute left-0 w-full items-center justify-center font-bold font-rubik">
+                  <td className="flex flex-col h-screen justify-center items-center">
                     <Lottie animationData={Squirtle} />
-                  </div>
-                </div>
+                  </td>
+                </tr>
               )}
             </table>
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
