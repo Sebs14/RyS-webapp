@@ -144,6 +144,9 @@ const table = () => {
                   <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
                     ID Flete
                   </th>
+                  <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                    Cliente
+                  </th>
                   <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
                     Destino
                   </th>
@@ -163,9 +166,14 @@ const table = () => {
                   {length > 0 ? (
                     <>
                       <tr>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[10%] max-w-[10%]">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {freights.data[a].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[30%] max-w-[30%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[a].clients.name}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
@@ -173,7 +181,7 @@ const table = () => {
                             {freights.data[a].destination}
                           </p>
                         </td>
-                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[10%] max-w-[10%]">
                           <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
                             {freights.data[a].tonage}
                           </p>
@@ -190,6 +198,11 @@ const table = () => {
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {freights.data[b].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[b].clients.name}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
@@ -218,6 +231,11 @@ const table = () => {
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[c].clients.name}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
                             {freights.data[c].destination}
                           </p>
                         </td>
@@ -238,6 +256,11 @@ const table = () => {
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {freights.data[d].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[d].clients.name}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
@@ -266,6 +289,11 @@ const table = () => {
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[e].clients.name}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
                             {freights.data[e].destination}
                           </p>
                         </td>
@@ -286,6 +314,11 @@ const table = () => {
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
                           <p className="text-gray-900 whitespace-no-wrap">
                             {freights.data[f].idFreight}
+                          </p>
+                        </td>
+                        <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
+                          <p className="text-gray-900 whitespace-no-wrap">
+                            {freights.data[f].clients.name}
                           </p>
                         </td>
                         <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
