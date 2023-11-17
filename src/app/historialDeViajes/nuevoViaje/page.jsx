@@ -28,7 +28,7 @@ const NewConductor = () => {
   const newFreight = async (e) => {
     e.preventDefault();
     const form = e.target;
-    const data = {
+    let data = {
       units: form[0].value,
       date: dateFormat(form[1].value, "yyyy/MM/dd"),
       clients: form[2].value,
@@ -39,10 +39,21 @@ const NewConductor = () => {
       comments: form[7].value,
     };
 
-    const response = await postFreights(data).then(() => {
+    const response = await postFreights(data);
+
+    if (response === 201) {
       submitNewConductor();
-      console.log(data);
-    });
+      data = {
+        units: "",
+        date: "",
+        clients: "",
+        destination: "",
+        tonage: "",
+        type: "",
+        shipment: "",
+        comments: "",
+      };
+    }
   };
 
   function closeModal() {

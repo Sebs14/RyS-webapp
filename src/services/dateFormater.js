@@ -5,22 +5,22 @@ export function dateFormat(inputDate, format) {
   const date = new Date(inputDate);
 
   //extract the parts of the date
-  const day = date.getDate();
+  const day = date.getDate() + 1;
   const month = date.getMonth() + 1;
-  const year = date.getFullYear();    
+  const year = date.getFullYear();
 
   //replace the month
-  format = format.replace("MM", month.toString().padStart(2,"0"));        
+  format = format.replace("MM", month.toString().padStart(2, "0"));
 
   //replace the year
   if (format.indexOf("yyyy") > -1) {
-      format = format.replace("yyyy", year.toString());
+    format = format.replace("yyyy", year.toString());
   } else if (format.indexOf("yy") > -1) {
-      format = format.replace("yy", year.toString().substr(2,2));
+    format = format.replace("yy", year.toString().substr(2, 2));
   }
 
   //replace the day
-  format = format.replace("dd", day.toString().padStart(2,"0"));
+  format = format.replace("dd", day.toString().padStart(2, "0"));
 
   return format;
 }

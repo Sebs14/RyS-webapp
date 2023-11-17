@@ -21,13 +21,23 @@ const postFreights = async (freightData) => {
   params.append("tonage", freightData.tonage);
   params.append("type", freightData.type);
   params.append("shipment", freightData.shipment);
-  params.append("comments", freightData.comment);
+  params.append("comment", freightData.comment);
 
   try {
     const response = await axios.post(url + `freights`, params, config);
-    console.log(response);
-    return response;
+    if (response.status === 201) {
+      params.delete("units");
+      params.delete("date");
+      params.delete("clients");
+      params.delete("destination");
+      params.delete("tonage");
+      params.delete("type");
+      params.delete("shipment");
+      params.delete("comment");
+    }
+    return response.status;
   } catch (error) {
+    alert("Error al crear el flete");
     console.error(error);
   }
 };
