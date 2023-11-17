@@ -24,7 +24,7 @@ const logout = () => {
 };
 
 const getCurrentUser = () => {
-  return localStorage.getItem("token");
+  return typeof window !== "undefined" ? localStorage.getItem("token") : false;
 };
 
 const authService = {

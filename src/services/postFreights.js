@@ -2,7 +2,11 @@
 import axios from "axios";
 
 const config = {
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  headers: {
+    Authorization: `Bearer ${
+      typeof window !== "undefined" ? localStorage.getItem("token") : false
+    }`,
+  },
 };
 
 const params = new URLSearchParams();
