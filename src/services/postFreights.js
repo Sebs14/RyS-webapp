@@ -21,7 +21,7 @@ const postFreights = async (freightData) => {
   params.append("tonage", freightData.tonage);
   params.append("type", freightData.type);
   params.append("shipment", freightData.shipment);
-  params.append("comment", freightData.comment);
+  params.append("comments", freightData.comments);
 
   try {
     const response = await axios.post(url + `freights`, params, config);
@@ -33,7 +33,7 @@ const postFreights = async (freightData) => {
       params.delete("tonage");
       params.delete("type");
       params.delete("shipment");
-      params.delete("comment");
+      params.delete("comments");
     }
     return response.status;
   } catch (error) {

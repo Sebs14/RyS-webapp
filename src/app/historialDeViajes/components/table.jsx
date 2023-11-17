@@ -121,10 +121,17 @@ const table = () => {
   return (
     <div className="bg-white px-4 rounded-md w-full ">
       <div className=" flex items-center justify-between pb-6">
-        <div className="relative ">
+        <div className="relative w-full">
           <h2 className="text-gray-600 font-semibold font-rubik">
             Historial de rutas
           </h2>
+          <div className="absolute right-0 top-0">
+            <Link href="/historialDeViajes/nuevoViaje" className="">
+              <div className="flex items-center justify-center h-full w-full p-1 rounded-r-lg rounded-b-md bg-indigo-600 text-white/70 hover:text-white hover:bg-indigo-800 transition duration-500 ease-in-out font-bold font-rubik">
+                <p>NUEVO VIAJE</p>
+              </div>
+            </Link>
+          </div>
           <div className="bg-[#4C3175] mt-2 flex w-[41px] h-[1px] absolute -left-8" />
         </div>
       </div>

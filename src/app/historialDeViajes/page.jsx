@@ -21,13 +21,6 @@ const page = () => {
           </div>
         </div>
         <div className="relative">
-          <div className="absolute rounded-lg bottom-28 right-28 w-40 h-16 overflow-hidden">
-            <Link href="/historialDeViajes/nuevoViaje" className="">
-              <div className="flex items-center justify-center h-full w-full bg-indigo-600 text-white/70 hover:text-white hover:bg-indigo-800 transition duration-500 ease-in-out font-bold font-rubik">
-                <p>NUEVO VIAJE</p>
-              </div>
-            </Link>
-          </div>
         </div>
       </div>
     </div>
