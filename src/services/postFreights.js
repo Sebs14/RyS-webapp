@@ -21,7 +21,7 @@ const postFreights = async (freightData) => {
   params.append("tonage", freightData.tonage);
   params.append("type", freightData.type);
   params.append("shipment", freightData.shipment);
-  params.append("comment", freightData.comment);
+  params.append("comments", freightData.comment);
 
   try {
     const response = await axios.post(url + `freights`, params, config);
