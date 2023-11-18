@@ -7,8 +7,10 @@ axios.defaults.baseURL = process.env.BASE_URL;
 
 const params = new URLSearchParams();
 
-
-
+const deleteAll = () => {
+  params.delete("identifier");
+  params.delete("password");
+};
 
 const login = (email, password) => {
   params.append("identifier", email);
@@ -18,10 +20,7 @@ const login = (email, password) => {
     var cadena = JSON.stringify(response.data.token).replace(/['"]+/g, "");
     localStorage.setItem("Correo", email);
     localStorage.setItem("token", cadena);
-    if (response.status === 201) {
-      params.delete("identifier");
-      params.delete("password");
-    }
+    deleteAll();
     return response.data;
   });
 };
@@ -36,6 +35,7 @@ const getCurrentUser = () => {
 };
 
 const authService = {
+  deleteAll,
   login,
   logout,
   getCurrentUser,
