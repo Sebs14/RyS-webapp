@@ -17,6 +17,7 @@ const getFreights = async () => {
     return response;
   } catch (error) {
     console.log(error);
+    return error.response.data;
   }
 };
 export default getFreights;
