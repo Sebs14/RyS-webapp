@@ -1,11 +1,8 @@
 "use client";
 import React from "react";
-// import Navbar from '../../components/Navbar'
 import Sidebar from "@/components/Sidebar";
 import Table from "./components/table";
-import Link from "next/link";
 
-// <Navbar/>
 const page = () => {
   return (
     <div className="max-h-screen overflow-hidden">
