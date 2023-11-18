@@ -6,12 +6,14 @@ import getFreights from "../../../services/fetchFreights";
 import moment from "moment";
 import Lottie from "lottie-react";
 import Squirtle from "../../../../public/squirtle.json";
-import axios from "axios";
 import Row from "./row";
+import authService from "@/services/auth.service";
+import { useRouter } from "next/navigation";
 
 const table = () => {
+  const router = useRouter();
   const [freights, setFreights] = useState();
-  const [status, setStatus] = useState(null);
+  const [status, setStatus] = useState();
   const [length, setLength] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [numPage, setNumPage] = useState(1);
@@ -22,27 +24,6 @@ const table = () => {
   const [e, setE] = useState(4);
   const [f, setF] = useState(5);
   const [token, setToken] = useState("");
-  // const a = 0;
-  // const b = 1;
-  // const c = 2;
-  // const d = 3;
-
-  // const config = {
-  //   headers: { Authorization: `Bearer ${token}` },
-  // };
-  //https://rys.up.railway.app/
-  // const getFreights = async () => {
-  //   try {
-  //     const responses = await axios.get(
-  //       `  http://localhost:8080/` + `freights`,
-  //       config
-  //     );
-  //     console.log(responses);
-  //     return responses;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const cambioATrue = () => {
     setIsLoaded(true);
@@ -50,9 +31,9 @@ const table = () => {
 
   const fetchFreights = async () => {
     const response = await getFreights();
+    setStatus(response.status);
     setFreights(response);
     setLength(response.data.length);
-    setStatus(response.status);
   };
 
   const prevButton = () => {
@@ -75,49 +56,27 @@ const table = () => {
   };
 
   useEffect(() => {
+    if (authService.getCurrentUser()) {
+      fetchFreights();
+    } else {
+      router.push("/login", { shallow: false });
+    }
+  }, []);
+
+  useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
       const tokens = localStorage.getItem("token");
-
       setToken(tokens);
     }
   }, []);
 
   useEffect(() => {
-    fetchFreights();
-  }, [token]);
-
-  useEffect(() => {
     if (status === 200) {
       cambioATrue();
+    } else if (status === 403 && typeof window !== "undefined") {
+      window.location.reload();
     }
   }, [status]);
-
-  // freights.data.map((f) => {
-  //   return (
-  //     <tr key={f.idFreight}>
-  //       <td className="flex items-center ml-3 px-5 py-5 border-b border-gray-200 bg-white text-sm">
-  //         <p className="text-gray-900 whitespace-no-wrap">
-  //         {f.idFreight}
-  //         </p>
-  //       </td>
-  //       <td className="ml-3 flex items-center px-5 py-5 border-b border-gray-200 bg-white text-sm">
-  //         <p className="text-gray-900 whitespace-no-wrap">
-  //         {f.destination}
-  //         </p>
-  //       </td>
-  //       <td className="px-10 py-10 border-b border-gray-200 bg-white text-sm">
-  //         <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
-  //             {f.tonage}
-  //         </p>
-  //       </td>
-  //       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-  //           <p className="text-gray-900 whitespace-no-wrap">
-  //               {f.date}
-  //           </p>
-  //       </td>
-  //   </tr>
-  //   )
-  // })
 
   return (
     <div className="bg-white px-4 rounded-md w-full ">
@@ -139,30 +98,29 @@ const table = () => {
       <div className="">
         <div className="-mx-4 sm:-mx-8 px-4 sm:px-8 scroll-smooth lg:scroll-auto">
           <div className="inline-block min-w-full  rounded-lg  overflow-hidden">
-            <table className="min-w-full leading-normal ">
-              <thead className="font-rubik">
-                <tr>
-                  <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    ID Flete
-                  </th>
-                  <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    Cliente
-                  </th>
-                  <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    Destino
-                  </th>
-                  <th className="flex px-5 py-4  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    <div className="flex flex-col justify-center items-center">
-                      <span>Placa</span>
-                    </div>
-                  </th>
-                  <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    Fecha
-                  </th>
-                </tr>
-              </thead>
-
-              {isLoaded === true ? (
+            {isLoaded ? (
+              <table className="min-w-full leading-normal ">
+                <thead className="font-rubik">
+                  <tr>
+                    <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                      ID Flete
+                    </th>
+                    <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                      Cliente
+                    </th>
+                    <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                      Destino
+                    </th>
+                    <th className="flex px-5 py-4  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                      <div className="flex flex-col justify-center items-center">
+                        <span>Placa</span>
+                      </div>
+                    </th>
+                    <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                      Fecha
+                    </th>
+                  </tr>
+                </thead>
                 <tbody>
                   {length > 0 ? (
                     <>
@@ -229,14 +187,15 @@ const table = () => {
                     </tbody>
                   )}
                 </tbody>
-              ) : (
-                <tr className="flex flex-col absolute left-0 w-full items-center justify-center font-bold font-rubik">
-                  <td className="flex flex-col h-screen justify-center items-center">
-                    <Lottie animationData={Squirtle} />
-                  </td>
-                </tr>
-              )}
-            </table>
+              </table>
+            ) : (
+              <div className="flex flex-col absolute left-0 w-full items-center justify-center font-bold font-rubik">
+                <div className="flex flex-col h-screen justify-center items-center">
+                  <span>Cargando información</span>
+                  <Lottie animationData={Squirtle} />
+                </div>
+              </div>
+            )}
             <div className="px-5 py-5 bg-white border-t flex flex-col xs:flex-row items-center xs:justify-between          ">
               <div className="inline-flex w-full justify-between items-center mt-2 xs:mt-0">
                 {a === 0 ? (
