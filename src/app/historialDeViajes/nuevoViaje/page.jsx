@@ -62,6 +62,11 @@ const NewConductor = () => {
   }
 
   useEffect(() => {
+    if (!authService.getCurrentUser()) {
+      router.push("/login");
+    }
+  }, []);
+  useEffect(() => {
     fetchUnits().then((data) => {
       data.map((unit) => {
         const option = document.createElement("option");
