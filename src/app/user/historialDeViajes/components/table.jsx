@@ -2,10 +2,10 @@
 import { useState, useEffect } from "react";
 import React from "react";
 import Link from "next/link";
-import getFreights from "../../../services/fetchFreights";
+import getFreights from "@/services/fetchFreights";
 import moment from "moment";
 import Lottie from "lottie-react";
-import Squirtle from "../../../../public/squirtle.json";
+import Squirtle from "../../../../../public/squirtle.json";
 import Row from "./row";
 import authService from "@/services/auth.service";
 import { useRouter } from "next/navigation";
