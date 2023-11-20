@@ -11,9 +11,12 @@ const config = {
 
 const url = process.env.BASE_URL;
 
-const getFreights = async () => {
+const getFreights = async (page, limit) => {
   try {
-    const response = await axios.get(url + `freights`, config);
+    const response = await axios.get(
+      url + `freights/pageable?page=${page}&limit=${limit}`,
+      config
+    );
     return response;
   } catch (error) {
     console.log(error);
