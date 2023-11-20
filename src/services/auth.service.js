@@ -12,6 +12,16 @@ const deleteAll = () => {
   params.delete("password");
 };
 
+const getCurrentUsers = async (config) => {
+  try {
+    const response = await axios.get("user/me", config);
+    return response.data;
+  } catch (error) {
+    console.error("Error retrieving current user:", error);
+    return error.request.status;
+  }
+};
+
 const login = (email, password) => {
   params.append("identifier", email);
   params.append("password", password);
@@ -20,14 +30,25 @@ const login = (email, password) => {
     var cadena = JSON.stringify(response.data.token).replace(/['"]+/g, "");
     localStorage.setItem("Correo", email);
     localStorage.setItem("token", cadena);
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${cadena}`,
+      },
+    };
+
+    var user = getCurrentUsers(config)
     deleteAll();
-    return response.data;
+    return { response, user };
   });
 };
+
+
 
 const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("Correo");
+  deleteAll();
 };
 
 const getCurrentUser = () => {

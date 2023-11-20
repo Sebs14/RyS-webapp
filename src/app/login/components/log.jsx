@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import AuthService from "../../../services/auth.service";
 import axios from "axios";
+import getCurrentUser from "@/services/getCurrent";
 
 const Log = () => {
   const router = useRouter();
@@ -16,8 +17,16 @@ const Log = () => {
     e.preventDefault();
     try {
       await AuthService.login(email, password).then(
-        () => {
-          router.push("/historialDeViajes");
+        (data) => {
+          data.user.then((user) => {
+            console.log(user.rol);
+            if (user.rol == "admin" || user.rol == "dev") {
+              router.push("/adminUsers");
+              console.log("redirecting to admin view");
+            } else {
+              router.push("/user/historialDeViajes");
+            }
+          });
         },
         (error) => {
           AuthService.deleteAll();
