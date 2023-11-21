@@ -4,6 +4,7 @@ import { Tab } from "@headlessui/react";
 import FormCreateUser from "./components/FormCreateUser";
 import Sidebar from "@/components/Sidebar";
 import DialogUsers from "./components/dialog";
+import getAllUsers from "@/services/getAllUsers";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -11,25 +12,18 @@ function classNames(...classes) {
 
 const page = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [data, setData] = useState([]);
+  
   let [categories] = useState({
     "Crear usuario": [],
-    "Ver usuarios": [
-      {
-        id: 1,
-        title: "Is tech making coffee better or worse?",
-        date: "Jan 7",
-        commentCount: 29,
-        shareCount: 16,
-      },
-      {
-        id: 2,
-        title: "The most innovative things happening in coffee",
-        date: "Mar 19",
-        commentCount: 24,
-        shareCount: 12,
-      },
-    ],
+    "Ver usuarios": data,
   });
+
+  useEffect(() => {
+    getAllUsers().then((res) => {
+      setData(res)
+    })
+  }, [])
   return (
     <div className="flex max-h-screen">
       <Sidebar
