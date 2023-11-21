@@ -21,11 +21,7 @@ const FormCreateUser = ({ setIsOpen, isCreated, setIsCreated }) => {
 
     if (response === 201) {
       setIsOpen(true);
-      if (isCreated === false) {
-        setIsCreated(true);
-      } else {
-        setIsCreated(false);
-      }
+      setIsCreated(!isCreated);
       data = {
         name: "",
         dui: "",
