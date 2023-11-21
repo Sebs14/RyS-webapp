@@ -9,6 +9,15 @@ import "react-toastify/dist/ReactToastify.css";
 const FormFlota = ({ idFreight }) => {
   const [value, setValue] = useState("selecciona un empleado");
 
+  const puesto = [
+    {
+      puesto: "Ayudante",
+    },
+    {
+      puesto: "Conductor",
+    },
+  ];
+
   const notify = () =>
     toast.success("Empleado agregado con exito!", {
       position: "top-center",
@@ -29,7 +38,6 @@ const FormFlota = ({ idFreight }) => {
       pay: form[3].value,
       viatic: form[4].value,
       extraPay: form[5].value,
-      date: moment(form[6].value).utc().format("YYYY/MM/DD"),
     };
     postEmpFreight(data).then((res) => {
       if (res === 201) {
@@ -42,7 +50,6 @@ const FormFlota = ({ idFreight }) => {
           pay: "",
           viatic: "",
           extraPay: "",
-          date: "",
         };
       }
     });
@@ -89,10 +96,13 @@ const FormFlota = ({ idFreight }) => {
         <label className="w-full text-start font-rubik font-bold text-black">
           Puesto
         </label>
-        <input
+        <select
           className="focus:outline-none ring-offset-2 focus:ring-2 p-2 rounded-md "
           placeholder="Ayudante..."
-        />
+        >
+          <option value={puesto[0].puesto}>{puesto[0].puesto}</option>
+          <option value={puesto[1].puesto}>{puesto[1].puesto}</option>
+        </select>
       </div>
       <div className="flex flex-col">
         <label className="w-full text-start font-rubik font-bold text-black">
@@ -119,15 +129,6 @@ const FormFlota = ({ idFreight }) => {
         <input
           className="focus:outline-none ring-offset-2 focus:ring-2 p-2 rounded-md "
           placeholder="2..."
-        />
-      </div>
-      <div className="flex flex-col">
-        <label className="w-full text-start font-rubik font-bold text-black">
-          Fecha
-        </label>
-        <input
-          type="date"
-          className="focus:outline-none ring-offset-2  focus:ring-2 p-2 rounded-md"
         />
       </div>
       <button

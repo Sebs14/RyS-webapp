@@ -13,7 +13,6 @@ export default function DialogAdd({ isOpen, setIsOpen, idFreight }) {
   function closeModal() {
     setIsOpen(false);
   }
-
   let [categories] = useState({
     "Añadir empleado a flota": [],
     "Empleados en flota": [],
@@ -46,7 +45,7 @@ export default function DialogAdd({ isOpen, setIsOpen, idFreight }) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-[90%] h-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="md:w-[60%] w-[90%] h-full transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
                   <div className="w-full flex justify-end">
                     <button
                       type="button"
@@ -92,7 +91,7 @@ export default function DialogAdd({ isOpen, setIsOpen, idFreight }) {
                       </Tab.Panel>
                       <Tab.Panel>
                         <div className="mt-2">
-                          <TableFloat idFreight={idFreight}/>
+                          <TableFloat idFreight={idFreight} />
                         </div>
                       </Tab.Panel>
                     </Tab.Panels>
