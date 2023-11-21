@@ -1,9 +1,8 @@
 "use client";
 import React, { useState, Fragment } from "react";
 import createUser from "@/services/createUser";
-import { dateFormat } from "@/services/dateFormater";
 
-const FormCreateUser = (setIsOpen) => {
+const FormCreateUser = ({ setIsOpen, isCreated, setIsCreated }) => {
   const newUser = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -11,7 +10,7 @@ const FormCreateUser = (setIsOpen) => {
       name: form[0].value,
       dui: form[1].value,
       nit: form[2].value,
-      rol: form[3].value,
+      rol: form[3].value.toLowerCase(),
       phone: form[4].value,
       email: form[5].value,
       address: form[6].value,
@@ -22,6 +21,11 @@ const FormCreateUser = (setIsOpen) => {
 
     if (response === 201) {
       setIsOpen(true);
+      if (isCreated === false) {
+        setIsCreated(true);
+      } else {
+        setIsCreated(false);
+      }
       data = {
         name: "",
         dui: "",
