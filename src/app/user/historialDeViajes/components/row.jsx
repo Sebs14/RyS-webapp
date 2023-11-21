@@ -2,7 +2,7 @@
 import React from "react";
 import moment from "moment";
 
-const Row = ({ idFreight, client, destination, plate, date }) => {
+const Row = ({ idFreight, client, destination, plate }) => {
   return (
     <tr>
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[10%] max-w-[10%]">
@@ -17,11 +17,6 @@ const Row = ({ idFreight, client, destination, plate, date }) => {
       <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[10%] max-w-[10%]">
         <p className="text-green-500 flex py-1 px-4 w-fit  bg-[#d1fae5] rounded font-semibold">
           {plate}
-        </p>
-      </td>
-      <td className="px-5 py-5 border-b border-gray-200 bg-white text-sm min-w-[25%] max-w-[25%]">
-        <p className="text-gray-900 whitespace-no-wrap">
-          {moment(date).utc().format("YYYY-MM-DD")}
         </p>
       </td>
     </tr>

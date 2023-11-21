@@ -5,8 +5,8 @@ import Table from "./components/table";
 
 const page = () => {
   return (
-    <div className="max-h-screen overflow-hidden">
-      <div className="flex ">
+    <div className="h-screen overflow-hidden">
+      <div className="flex h-screen">
         <Sidebar
           historialPage={true}
           unidadesPage={false}

@@ -1,14 +1,13 @@
 "use client";
 import { useState, useEffect } from "react";
 import React from "react";
-import Link from "next/link";
-import getFreights from "@/services/fetchFreights";
-import moment from "moment";
 import Lottie from "lottie-react";
 import Squirtle from "../../../../../public/squirtle.json";
 import Row from "./row";
+import moment from "moment";
 import authService from "@/services/auth.service";
 import { useRouter } from "next/navigation";
+import getMyFreights from "@/services/fetchMyFreights";
 
 const table = () => {
   const router = useRouter();
@@ -26,7 +25,7 @@ const table = () => {
 
   const fetchFreights = async () => {
     const page = numPage - 1;
-    const response = await getFreights(page, limit);
+    const response = await getMyFreights(page, limit);
     setStatus(response.status);
     setFreights(response);
     setLength(response.data.length);
@@ -71,15 +70,8 @@ const table = () => {
       <div className=" flex items-center justify-between pb-6">
         <div className="relative w-full">
           <h2 className="text-gray-600 font-semibold font-rubik">
-            Historial de rutas
+            Mis viajes 🚚
           </h2>
-          <div className="absolute right-0 top-0">
-            <Link href="/historialDeViajes/nuevoViaje" className="">
-              <div className="flex items-center justify-center h-full w-full p-1 rounded-r-lg rounded-b-md bg-indigo-600 text-white/70 hover:text-white hover:bg-indigo-800 transition duration-500 ease-in-out font-bold font-rubik">
-                <p>NUEVO VIAJE</p>
-              </div>
-            </Link>
-          </div>
           <div className="bg-[#4C3175] mt-2 flex w-[41px] h-[1px] absolute -left-8" />
         </div>
       </div>
@@ -91,7 +83,7 @@ const table = () => {
                 <thead className="font-rubik">
                   <tr>
                     <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                      ID Flete
+                      Fecha
                     </th>
                     <th className="px-5 py-3 border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
                       Cliente
@@ -101,11 +93,8 @@ const table = () => {
                     </th>
                     <th className="flex px-5 py-4  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
                       <div className="flex flex-col justify-center items-center">
-                        <span>Placa</span>
+                        <span>Pago</span>
                       </div>
-                    </th>
-                    <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                      Fecha
                     </th>
                   </tr>
                 </thead>
@@ -115,14 +104,17 @@ const table = () => {
                       {freights.data.map((freight) => {
                         return (
                           <Row
-                            key={freight.idFreight}
-                            idFreight={freight.idFreight}
-                            client={freight.clients.name}
-                            destination={freight.destination}
-                            plate={freight.units.plate}
-                            date={moment(freight.date)
+                            key={freight.idEmployeeFreigh}
+                            idFreight={moment(freight.freightdate)
                               .utc()
                               .format("YYYY-MM-DD")}
+                            client={freight.freight.clients.name}
+                            destination={freight.freight.destination}
+                            plate={
+                              freight.payment +
+                              freight.viatic +
+                              freight.extraPayment
+                            }
                           />
                         );
                       })}
