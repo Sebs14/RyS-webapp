@@ -23,17 +23,23 @@ const postEmpFreight = async (data) => {
 
   try {
     const response = await axios.post(url + `empfreight`, params, config);
-    if (response.status === 201) {
-      params.delete("freight");
-      params.delete("user");
-      params.delete("position");
-      params.delete("payment");
-      params.delete("viatic");
-      params.delete("extraPayment");
-      params.delete("freightdate");
-    }
+    params.delete("freight");
+    params.delete("user");
+    params.delete("position");
+    params.delete("payment");
+    params.delete("viatic");
+    params.delete("extraPayment");
+    params.delete("freightdate");
+
     return response.status;
   } catch (error) {
+    params.delete("freight");
+    params.delete("user");
+    params.delete("position");
+    params.delete("payment");
+    params.delete("viatic");
+    params.delete("extraPayment");
+    params.delete("freightdate");
     console.error("Error posting empfreight:", error);
     throw error;
   }
