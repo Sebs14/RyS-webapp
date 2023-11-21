@@ -16,6 +16,7 @@ const table = () => {
   const [status, setStatus] = useState();
   const [length, setLength] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
+  const [isDeleted, setIsDeleted] = useState(false);
   const [numPage, setNumPage] = useState(1);
   const [token, setToken] = useState("");
   const limit = 6;
@@ -49,7 +50,7 @@ const table = () => {
 
   useEffect(() => {
     fetchFreights();
-  }, [numPage]);
+  }, [numPage, isDeleted]);
 
   useEffect(() => {
     if (typeof window !== "undefined" && window.localStorage) {
@@ -107,8 +108,7 @@ const table = () => {
                     <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
                       Fecha
                     </th>
-                    <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
-                    </th>
+                    <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -125,6 +125,8 @@ const table = () => {
                             date={moment(freight.date)
                               .utc()
                               .format("YYYY-MM-DD")}
+                            setIsDeleted={setIsDeleted}
+                            isDeleted={isDeleted}
                           />
                         );
                       })}
