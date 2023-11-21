@@ -35,6 +35,15 @@ const FormFlota = ({ idFreight }) => {
       if (res === 201) {
         notify();
         form.reset();
+        let data = {
+          idFreight: idFreight,
+          employee: "",
+          position: "",
+          pay: "",
+          viatic: "",
+          extraPay: "",
+          date: "",
+        };
       }
     });
   };
