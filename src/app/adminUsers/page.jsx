@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Tab } from "@headlessui/react";
 import FormCreateUser from "./components/FormCreateUser";
 import Sidebar from "@/components/Sidebar";
@@ -13,25 +13,25 @@ function classNames(...classes) {
 const page = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
-  
+  const [isCreated, setIsCreated] = useState(false);
+
   let [categories] = useState({
     "Crear usuario": [],
-    "Ver usuarios": data,
+    "Ver usuarios": [data],
   });
 
   useEffect(() => {
     getAllUsers().then((res) => {
-      setData(res)
-    })
-  }, [])
+      setData(res);
+    });
+  }, [isCreated]);
   return (
     <div className="flex max-h-screen">
       <Sidebar
-        historialPage={true}
-        unidadesPage={false}
-        conductoresPage={false}
+        historialPage={false}
+        createUserPage={true}
       />
-      <div className="w-full flex flex-col px-2 py-16">
+      <div className="w-full flex flex-col px-2 py-5">
         <Tab.Group>
           <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
             {Object.keys(categories).map((category) => (
@@ -62,30 +62,24 @@ const page = () => {
               >
                 {posts.length > 0 ? (
                   <ul>
-                    {posts.map((post) => (
+                    {data.map((post) => (
                       <li
-                        key={post.id}
+                        key={post.dui}
                         className="relative rounded-md p-3 hover:bg-gray-100"
                       >
                         <h3 className="text-sm font-medium leading-5">
-                          {post.title}
+                          {post.name}
                         </h3>
 
                         <ul className="mt-1 flex space-x-1 text-xs font-normal leading-4 text-gray-500">
-                          <li>{post.date}</li>
+                          <li>{post.dui}</li>
                           <li>&middot;</li>
-                          <li>{post.commentCount} comments</li>
+                          <li>puesto: {post.rol}</li>
                           <li>&middot;</li>
-                          <li>{post.shareCount} shares</li>
+                          <li>{post.email}</li>
+                          <li>&middot;</li>
+                          <li>{post.address}</li>
                         </ul>
-
-                        <a
-                          href="#"
-                          className={classNames(
-                            "absolute inset-0 rounded-md",
-                            "ring-blue-400 focus:z-10 focus:outline-none focus:ring-2"
-                          )}
-                        />
                       </li>
                     ))}
                   </ul>
@@ -97,8 +91,8 @@ const page = () => {
                     <p className="text-lg font-rubik font-bold text-gray-500">
                       para crear un nuevo usuario
                     </p>
-                    <FormCreateUser setIsOpen={setIsOpen}/>
-                    <DialogUsers isOpen={isOpen}/>
+                    <FormCreateUser setIsOpen={setIsOpen} isCreated={isCreated} setIsCreated={setIsCreated} />
+                    <DialogUsers isOpen={isOpen} setIsOpen={setIsOpen} />
                   </div>
                 )}
               </Tab.Panel>
