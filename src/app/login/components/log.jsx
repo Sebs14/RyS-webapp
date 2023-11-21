@@ -16,10 +16,8 @@ const Log = () => {
       await AuthService.login(email, password).then(
         (data) => {
           data.user.then((user) => {
-            console.log(user.rol);
             if (user.rol == "admin" || user.rol == "dev") {
               router.push("/adminUsers");
-              console.log("redirecting to admin view");
             } else {
               router.push("/user/historialDeViajes");
             }
