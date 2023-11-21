@@ -15,6 +15,7 @@ const deleteAll = () => {
 const getCurrentUsers = async (config) => {
   try {
     const response = await axios.get("user/me", config);
+    localStorage.setItem("rol", response.data.rol);
     return response.data;
   } catch (error) {
     console.error("Error retrieving current user:", error);
@@ -37,17 +38,16 @@ const login = (email, password) => {
       },
     };
 
-    var user = getCurrentUsers(config)
+    var user = getCurrentUsers(config);
     deleteAll();
     return { response, user };
   });
 };
 
-
-
 const logout = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("Correo");
+  localStorage.removeItem("rol");
   deleteAll();
 };
 
