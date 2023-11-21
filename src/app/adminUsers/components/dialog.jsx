@@ -2,15 +2,11 @@
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 
-export default function DialogUsers({ isOpen }) {
+export default function DialogUsers({ isOpen, setIsOpen }) {
   function closeModal() {
     setIsOpen(false);
   }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
+  
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -43,12 +39,13 @@ export default function DialogUsers({ isOpen }) {
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Payment successful
+                    Usuario creado exitosamente
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">
-                      Your payment has been successfully submitted. We’ve sent
-                      you an email with all of the details of your order.
+                      El usuario ha sido creado exitosamente, ahora puedes
+                      compartir el usuario y contraseña con el usuario para que
+                      pueda iniciar sesión con el usuario creado.
                     </p>
                   </div>
 
@@ -58,7 +55,7 @@ export default function DialogUsers({ isOpen }) {
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={closeModal}
                     >
-                      Got it, thanks!
+                      Cerrar
                     </button>
                   </div>
                 </Dialog.Panel>
