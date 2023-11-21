@@ -107,6 +107,8 @@ const table = () => {
                     <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
                       Fecha
                     </th>
+                    <th className="px-5 py-3  border-gray-200 bg-white text-left text-xs font-semibold text-gray-600  tracking-wider">
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
