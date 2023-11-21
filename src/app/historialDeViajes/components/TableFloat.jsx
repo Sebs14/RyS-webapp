@@ -66,7 +66,7 @@ const TableFloat = ({ idFreight }) => {
                         <td className="py-4 px-6">{employee.user.dui}</td>
                         <td className="py-4 px-6">{employee.user.name}</td>
                         <td className="py-4 px-6">
-                          {employee.extraPayment +
+                          ${employee.extraPayment +
                             employee.payment +
                             employee.viatic}
                         </td>
