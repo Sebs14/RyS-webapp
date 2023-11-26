@@ -5,12 +5,14 @@ import FormCreateUser from "./components/FormCreateUser";
 import Sidebar from "@/components/Sidebar";
 import DialogUsers from "./components/dialog";
 import getAllUsers from "@/services/getAllUsers";
+import { useRouter } from "next/navigation";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const page = () => {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [data, setData] = useState([]);
   const [isCreated, setIsCreated] = useState(false);
@@ -25,12 +27,24 @@ const page = () => {
       setData(res);
     });
   }, [isCreated]);
+
+  useEffect(() => {
+    console.log("hola");
+    if (typeof window !== "undefined") {
+      if (
+        localStorage.getItem("rol") === "admin" ||
+        localStorage.getItem("rol") === "dev"
+      ) {
+        router.push("/adminUsers");
+      }
+      else {
+        router.push("/user/historialDeViajes");
+      }
+    }
+  }, []);
   return (
     <div className="flex max-h-screen">
-      <Sidebar
-        historialPage={false}
-        createUserPage={true}
-      />
+      <Sidebar historialPage={false} createUserPage={true} />
       <div className="w-full flex flex-col px-2 py-5">
         <Tab.Group>
           <Tab.List className="flex space-x-1 rounded-xl bg-blue-900/20 p-1">
@@ -91,7 +105,11 @@ const page = () => {
                     <p className="text-lg font-rubik font-bold text-gray-500">
                       para crear un nuevo usuario
                     </p>
-                    <FormCreateUser setIsOpen={setIsOpen} isCreated={isCreated} setIsCreated={setIsCreated} />
+                    <FormCreateUser
+                      setIsOpen={setIsOpen}
+                      isCreated={isCreated}
+                      setIsCreated={setIsCreated}
+                    />
                     <DialogUsers isOpen={isOpen} setIsOpen={setIsOpen} />
                   </div>
                 )}

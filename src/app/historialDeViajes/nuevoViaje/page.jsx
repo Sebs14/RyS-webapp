@@ -90,6 +90,20 @@ const NewConductor = () => {
     });
   }, []);
 
+  useEffect(() => {
+    console.log("hola");
+    if (typeof window !== "undefined") {
+      if (
+        localStorage.getItem("rol") === "admin" ||
+        localStorage.getItem("rol") === "dev"
+      ) {
+        router.push("/historialDeViajes/nuevoViaje");
+      } else {
+        router.push("/user/historialDeViajes");
+      }
+    }
+  }, []);
+
   return (
     <article className="flex min-h-screen items-center justify-between bg-[#FFF8F0]">
       <div className="flex flex-col items-start pl-60 justify-center w-[50%] bg-[#9DD9D2] min-h-screen">

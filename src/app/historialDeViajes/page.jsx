@@ -1,9 +1,24 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import Sidebar from "@/components/Sidebar";
 import Table from "./components/table";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
+  useEffect(() => {
+    console.log("hola");
+    if (typeof window !== "undefined") {
+      if (
+        localStorage.getItem("rol") === "admin" ||
+        localStorage.getItem("rol") === "dev"
+      ) {
+        router.push("/historialDeViajes");
+      } else {
+        router.push("/user/historialDeViajes");
+      }
+    }
+  }, []);
   return (
     <div className="h-screen overflow-hidden">
       <div className="flex h-screen">
